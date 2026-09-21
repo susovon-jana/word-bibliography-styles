@@ -64,6 +64,13 @@ git branch -M main
 git remote add origin https://github.com/susovon-jana/word-bibliography-styles.git
 git push -u origin main
 ```
+## For Update in the GitHub
+
+```powershell
+git add .
+git commit -m "Update bibliography styles"
+git push
+```
 
 The included GitHub Actions workflow validates every XSL file when you push or open a pull request.
 
