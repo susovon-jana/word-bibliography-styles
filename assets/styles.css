@@ -21,3 +21,6 @@ dialog { max-width:650px; }
 .reference-examples { color:#40516b; font-family:Georgia,serif; font-size:.88rem; padding-left:24px; }
 .reference-examples li { margin:10px 0; }
 .reference-examples a { color:var(--accent-dark); text-decoration:underline; }
+.copyable-path { background:transparent; border:0; color:inherit; cursor:pointer; font-family:ui-monospace,monospace; font-size:.84rem; padding:0; text-decoration:underline dotted; text-underline-offset:3px; }
+.copyable-path:hover { color:var(--accent); }
+.path-code { color:#fff; text-align:left; }

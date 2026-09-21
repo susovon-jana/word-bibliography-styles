@@ -65,15 +65,13 @@ git remote add origin https://github.com/YOUR-ACCOUNT/YOUR-REPOSITORY.git
 git push -u origin main
 ```
 
-## For Update in the GitHub
+The included GitHub Actions workflow validates every XSL file when you push or open a pull request.
 
 ```powershell
 git add .
 git commit -m "Update bibliography styles"
 git push
 ```
-
-The included GitHub Actions workflow validates every XSL file when you push or open a pull request.
 
 ## Publish the download website
 
