@@ -74,18 +74,6 @@ git push
 
 The included GitHub Actions workflow validates every XSL file when you push or open a pull request.
 
-## Publish the download website
-
-This repository includes a responsive download website at `index.html`. It loads its style cards from `styles/index.json`; the deployment workflow rebuilds this catalogue every time you push to `main`.
-
-1. Push the repository to GitHub using the commands above.
-2. On GitHub, open **Settings** → **Pages**.
-3. Under **Build and deployment**, select **GitHub Actions** as the source.
-4. Push a commit to `main` or run **Deploy documentation site** from the **Actions** tab.
-5. GitHub displays the public website address when the workflow completes.
-
-To add a new style later, add its `.xsl` file to `styles/`, run `./scripts/Validate-Styles.ps1` locally, and push the change. The style is automatically added to the website download catalogue during deployment.
-
 ## License and attribution
 
 Several files are Microsoft Office-provided styles. Review the applicable Microsoft Office license before publishing or relicensing them. Do not apply an open-source license to those upstream files unless you have permission. Document your own changes to `IEEE_with_DOI.xsl` in commits or release notes.

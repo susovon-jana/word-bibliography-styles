@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Download and install Microsoft Word bibliography styles.">
+    <title>Word Citation Styles | Download Center</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Word Citation Styles home"><span class="brand-mark">W</span><span>Word Citation Styles</span></a>
+      <nav aria-label="Primary navigation"><a href="#styles">Browse styles</a><a href="#install">Install guide</a><a class="button button-small" href="https://github.com/" target="_blank" rel="noreferrer">View on GitHub</a></nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Microsoft Word bibliography styles</p>
+          <h1>References that look as professional as your research.</h1>
+          <p class="hero-text">Browse, understand, and download ready-to-install citation styles for Word. The library grows whenever new style files are added to the repository.</p>
+          <div class="hero-actions"><a class="button" href="#styles">Explore styles <span aria-hidden="true">↓</span></a><a class="text-link" href="#install">How installation works</a></div>
+        </div>
+        <aside class="hero-panel reveal" aria-label="Style library summary">
+          <span class="pulse-dot" aria-hidden="true"></span><p>Ready for Word</p><strong id="style-total">Loading</strong><span>downloadable styles</span>
+          <div class="sample-reference"><span>[1]</span><p>A. Researcher, “A well-formatted source,” <em>Journal of Scholarship</em>, 2026.</p></div>
+        </aside>
+      </section>
+
+      <section class="styles-section" id="styles">
+        <div class="section-heading reveal"><div><p class="eyebrow">Style library</p><h2>Choose the right reference style.</h2></div><label class="search"><span aria-hidden="true">⌕</span><input id="style-search" type="search" placeholder="Search styles" autocomplete="off"></label></div>
+        <div class="filter-bar reveal" id="filter-bar" aria-label="Filter citation styles"><button class="filter active" data-filter="all">All styles</button><button class="filter" data-filter="numeric">Numeric</button><button class="filter" data-filter="author-date">Author–date</button><button class="filter" data-filter="custom">Custom</button></div>
+        <div class="style-grid" id="style-grid" aria-live="polite"><p class="loading">Loading style catalogue…</p></div>
+      </section>
+
+      <section class="install-section" id="install">
+        <div class="section-heading reveal"><div><p class="eyebrow">Install in minutes</p><h2>Use a style in Microsoft Word.</h2></div></div>
+        <div class="steps">
+          <article class="step reveal"><span>01</span><h3>Download</h3><p>Select a style, review its features, then download the `.xsl` file.</p></article>
+          <article class="step reveal"><span>02</span><h3>Copy</h3><p>Close Word and copy the file to your personal bibliography styles folder.</p></article>
+          <article class="step reveal"><span>03</span><h3>Select</h3><p>Restart Word and choose the new style from <strong>References → Style</strong>.</p></article>
+        </div>
+        <div class="path-box reveal"><div><p class="path-label">Windows styles folder</p><code>%APPDATA%\Microsoft\Bibliography\Style</code></div><button class="copy-path" id="copy-path" type="button">Copy path</button></div>
+      </section>
+
+      <section class="contribute-section reveal"><p class="eyebrow">Built to grow</p><h2>Add a future style in one commit.</h2><p>Add an `.xsl` file to the <code>styles/</code> folder and push it to GitHub. The deployment workflow regenerates the catalogue, so it appears here automatically.</p><a class="button button-light" href="README.md">Read the contributor guide</a></section>
+    </main>
+
+    <footer><span>Word Citation Styles</span><span>Built for clear, consistent academic references.</span></footer>
+    <dialog id="style-dialog"><button class="dialog-close" type="button" aria-label="Close details">×</button><div id="dialog-content"></div></dialog>
+    <template id="style-card-template"><article class="style-card"><div class="card-top"><span class="style-category"></span><span class="file-type">XSL</span></div><h3></h3><p class="style-summary"></p><ul class="feature-list"></ul><div class="card-actions"><button class="details-button" type="button">Details</button><a class="download-button" download>Download <span aria-hidden="true">↓</span></a></div></article></template>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
