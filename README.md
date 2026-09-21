@@ -61,9 +61,10 @@ git init
 git add .
 git commit -m "Add Word bibliography styles"
 git branch -M main
-git remote add origin https://github.com/username/word-bibliography-styles.git
+git remote add origin https://github.com/YOUR-ACCOUNT/YOUR-REPOSITORY.git
 git push -u origin main
 ```
+
 ## For Update in the GitHub
 
 ```powershell
