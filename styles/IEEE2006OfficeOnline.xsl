@@ -152,15 +152,10 @@
           <xsl:when test="b:StyleNameLocalized/b:Lcid='1060'">
             <xsl:text>Način citiranja IEEE</xsl:text>
           </xsl:when>
-          <xsl:when test="b:StyleNameLocalized/b:Lcid='9242'">
-            <xsl:text>IEEE</xsl:text>
-          </xsl:when>
-          <xsl:when test="b:StyleNameLocalized/b:Lcid='10266'">
-            <xsl:text>IEEE</xsl:text>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:text>IEEE</xsl:text>
-          </xsl:otherwise>
+        <!-- PATCHED_BY_SCRIPT -->
+            <xsl:otherwise>
+                <xsl:text>IEEE</xsl:text>
+            </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
 
