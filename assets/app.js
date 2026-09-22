@@ -58,12 +58,90 @@ const statCategories = document.querySelector("#stat-categories");
 const statUpdated = document.querySelector("#stat-updated");
 const loadingNote = document.querySelector("#loading-note");
 const toast = document.querySelector("#toast");
+const scrollProgress = document.querySelector("#scroll-progress");
+const introOverlay = document.querySelector("#intro-overlay");
 
 /* ------------------------------------------------------------------ state */
 
 let styles = [];
 let activeFilter = "all";
 let countAnimation = null;
+
+function styleByFile(fileName) {
+  return styles.find((s) => s.file === fileName);
+}
+
+/* ----------------------------------------------------- direct download */
+
+/**
+ * Forces a real file download regardless of origin:
+ * the file is fetched as a blob and saved via an object URL, so clicking
+ * "Download" never navigates away and never opens the raw XML view.
+ */
+async function downloadStyle(style, button) {
+  const href = style.downloadUrl || `${STYLES_DIR}/${encodeURIComponent(style.file)}`;
+  const original = button ? button.innerHTML : null;
+
+  if (button) {
+    button.classList.add("is-busy");
+    button.innerHTML = 'Preparing…';
+  }
+
+  try {
+    const res = await fetch(href, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = style.file;
+    anchor.rel = "noopener";
+    document.body.append(anchor);
+    anchor.click();
+    anchor.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 5000);
+    if (button) {
+      button.classList.remove("is-busy");
+      button.classList.add("is-done");
+      button.innerHTML = 'Saved ✓';
+      setTimeout(() => {
+        button.classList.remove("is-done");
+        button.innerHTML = original;
+      }, 2200);
+    }
+    showToast(`Saved ${style.file} — now copy it into the Word styles folder`);
+  } catch (error) {
+    console.info("[download] blob download failed, opening raw file instead:", error.message);
+    window.open(href, "_blank", "noopener");
+    if (button) {
+      button.classList.remove("is-busy");
+      button.innerHTML = original;
+    }
+    showToast("Opened the raw file — use your browser's Save option");
+  }
+}
+
+/* ---------------------------------------------------------------- boot */
+
+(function boot() {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const seenThisSession = sessionStorage.getItem("wcs-intro") === "1";
+
+  if (!introOverlay || reduceMotion || seenThisSession) {
+    document.body.classList.remove("is-booting");
+    introOverlay?.remove();
+    return;
+  }
+
+  sessionStorage.setItem("wcs-intro", "1");
+  const finish = () => {
+    introOverlay.classList.add("is-done");
+    document.body.classList.remove("is-booting");
+    setTimeout(() => introOverlay.remove(), 700);
+  };
+  window.addEventListener("load", () => setTimeout(finish, 950));
+  setTimeout(finish, 2600); /* safety net if load event stalls */
+})();
 
 /* --------------------------------------------------------------- helpers */
 
@@ -373,6 +451,8 @@ function renderStyles() {
     );
     const download = card.querySelector(".download-button");
     const href = style.downloadUrl || `${STYLES_DIR}/${encodeURIComponent(style.file)}`;
+    download.dataset.file = style.file;
+    download.setAttribute("aria-label", `Download ${style.file}`);
     download.href = href;
     download.setAttribute("download", style.file);
     card.querySelector(".details-button").addEventListener("click", () => showDetails(style));
@@ -437,7 +517,7 @@ function showDetails(style) {
       <button class="copy-path" type="button" data-copy-path="${escapeHtml(WORD_STYLE_PATHS.mac)}">${escapeHtml(WORD_STYLE_PATHS.mac)}</button>
       (macOS). Restart Word, then select <strong>${escapeHtml(style.wordName)}</strong> under References → Style.
     </p>
-    <a class="button" href="${escapeHtml(href)}" download="${escapeHtml(style.file)}">Download ${escapeHtml(style.file)} <span aria-hidden="true">↓</span></a>`;
+    <a class="button download-button" href="${escapeHtml(href)}" download="${escapeHtml(style.file)}">Download ${escapeHtml(style.file)} <span aria-hidden="true">↓</span></a>`;
 
   dialogContent.querySelector(".word-name-copy").addEventListener("click", async () => {
     await copyText(style.wordName);
@@ -445,7 +525,14 @@ function showDetails(style) {
   });
   dialogContent.querySelectorAll(".copy-path").forEach((button) =>
     button.addEventListener("click", handleCopyPath)
-  );
+);
+  const dialogDownload = dialogContent.querySelector(".download-button");
+  if (dialogDownload) {
+    dialogDownload.addEventListener("click", (event) => {
+      event.preventDefault();
+      downloadStyle(style, event.currentTarget);
+    });
+  }
   dialog.showModal();
 }
 
@@ -482,6 +569,16 @@ filterBar.addEventListener("click", (event) => {
   renderStyles();
 });
 
+/* direct download via blob — one click, no navigation */
+grid.addEventListener("click", (event) => {
+  const download = event.target.closest(".download-button");
+  if (!download) return;
+  const style = styleByFile(download.dataset.file);
+  if (!style) return;
+  event.preventDefault();
+  downloadStyle(style, download);
+});
+
 document.querySelector(".dialog-close").addEventListener("click", () => dialog.close());
 dialog.addEventListener("click", (event) => {
   if (event.target === dialog) dialog.close();
@@ -510,9 +607,37 @@ themeToggle.addEventListener("click", () => {
 /* ------------------------------------------------------- scroll behaviours */
 
 const header = document.querySelector("#site-header");
-const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
+const onScroll = () => {
+  header.classList.toggle("is-scrolled", window.scrollY > 8);
+  if (scrollProgress) {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    scrollProgress.style.width = `${max > 0 ? (window.scrollY / max) * 100 : 0}%`;
+  }
+};
 window.addEventListener("scroll", onScroll, { passive: true });
+window.addEventListener("resize", onScroll);
 onScroll();
+
+/* gentle parallax for the backdrop orbs (desktop pointers only) */
+const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (finePointer && !reduceMotion) {
+  const orbs = document.querySelectorAll(".orb");
+  let rafPending = false;
+  window.addEventListener("mousemove", (event) => {
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(() => {
+      const dx = event.clientX / window.innerWidth - 0.5;
+      const dy = event.clientY / window.innerHeight - 0.5;
+      orbs.forEach((orb, index) => {
+        const depth = (index + 1) * 10;
+        orb.style.translate = `${dx * depth}px ${dy * depth}px`;
+      });
+      rafPending = false;
+    });
+  }, { passive: true });
+}
 
 const revealObserver = new IntersectionObserver(
   (entries) => {

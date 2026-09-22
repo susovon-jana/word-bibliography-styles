@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Download and install Microsoft Word bibliography & citation styles. The library auto-syncs with GitHub — every new style appears automatically.">
+    <meta name="description" content="Download and install Microsoft Word bibliography & citation styles. Curated by Susovon Jana, Ph.D. Auto-synced with GitHub, with the free CitePilot citation toolkit.">
     <meta name="theme-color" content="#2b579a">
     <meta property="og:title" content="Word Citation Styles — Download Center">
-    <meta property="og:description" content="Ready-to-install bibliography styles for Microsoft Word. Auto-synced with GitHub.">
+    <meta property="og:description" content="Ready-to-install bibliography styles for Microsoft Word. Auto-synced with GitHub. Curated by Susovon Jana, Ph.D.">
     <meta property="og:type" content="website">
     <title>Word Citation Styles | Download Center</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -15,7 +15,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles.css">
   </head>
-  <body>
+  <body class="is-booting">
+    <!-- glossy intro splash -->
+    <div class="intro-overlay" id="intro-overlay" aria-hidden="true">
+      <div class="intro-inner">
+        <span class="intro-mark" aria-hidden="true"><span>W</span></span>
+        <p class="intro-title">Word Citation Styles</p>
+        <p class="intro-sub">Ready-to-install bibliography styles · curated by <strong>Susovon Jana, Ph.D.</strong></p>
+        <span class="intro-bar"><span class="intro-bar-fill"></span></span>
+      </div>
+    </div>
+
+    <span class="scroll-progress" id="scroll-progress" aria-hidden="true"></span>
+
     <div class="backdrop" aria-hidden="true">
       <span class="orb orb-a"></span>
       <span class="orb orb-b"></span>
@@ -25,14 +37,22 @@
     <header class="site-header" id="site-header">
       <a class="brand" href="#top" aria-label="Word Citation Styles home">
         <span class="brand-mark" aria-hidden="true">W</span>
-        <span class="brand-name">Word Citation Styles</span>
+        <span class="brand-text">
+          <span class="brand-name">Word Citation Styles</span>
+          <span class="brand-by">by Susovon Jana, Ph.D.</span>
+        </span>
       </a>
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="#styles">Styles</a>
+        <a href="#citepilot">Toolkit</a>
         <a href="#install">Install guide</a>
-        <a href="#add">Add a style</a>
-        <a class="nav-github" href="https://github.com/susovon-jana/word-bibliography-styles" target="_blank" rel="noreferrer" aria-label="View repository on GitHub">
-          <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        <a href="#add">Contribute</a>
+        <a class="nav-chip nav-chip-profile" href="https://dr-susovon.pages.dev/" target="_blank" rel="noreferrer" title="Susovon Jana, Ph.D. — Assistant Professor, Amity University Kolkata">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 2.5 8.2 12 12.9l9.5-4.7L12 3.5Z"/><path d="M6 10.4v4.4c0 1.6 2.7 3.2 6 3.2s6-1.6 6-3.2v-4.4"/><path d="M21.5 8.2v5.3"/></svg>
+          <span>Susovon Jana, Ph.D.</span>
+        </a>
+        <a class="nav-chip" href="https://github.com/susovon-jana/word-bibliography-styles" target="_blank" rel="noreferrer" aria-label="View repository on GitHub">
+          <svg viewBox="0 0 16 16" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
           <span>GitHub</span>
         </a>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme">
@@ -49,30 +69,31 @@
     <main id="top">
       <!-- ================= HERO ================= -->
       <section class="hero">
-        <div class="hero-copy reveal">
-          <p class="eyebrow-badge">
+        <div class="hero-copy">
+          <p class="eyebrow-badge hero-item" style="--i:0">
             <span class="pulse-dot" aria-hidden="true"></span>
             Auto-synced with GitHub
           </p>
-          <h1>References that look as professional as <span class="grad-text">your research.</span></h1>
-          <p class="hero-text">
+          <h1 class="hero-item" style="--i:1">References that look as professional as <span class="grad-text">your research.</span></h1>
+          <p class="hero-text hero-item" style="--i:2">
             Browse and download ready-to-install bibliography styles for Microsoft Word.
-            This library is wired directly to the repository — the moment a new
-            <code>.xsl</code> style lands in the <code>styles/</code> folder, it appears here.
-            No rebuilds, no manual catalog edits.
+            The library is curated by <strong>Susovon Jana, Ph.D.</strong> and wired directly to the
+            repository — the moment a verified <code>.xsl</code> style lands in the
+            <code>styles/</code> folder, it appears here. Downloads are one click, no page jumps.
           </p>
-          <div class="hero-actions">
+          <div class="hero-actions hero-item" style="--i:3">
             <a class="button" href="#styles">Explore styles <span aria-hidden="true">↓</span></a>
-            <a class="button button-ghost" href="#add">Add your own style</a>
+            <a class="button button-ghost" href="#citepilot">Citation toolkit</a>
           </div>
-          <ul class="hero-chips" aria-label="Highlights">
+          <ul class="hero-chips hero-item" style="--i:4" aria-label="Highlights">
             <li><strong id="chip-count">—</strong> styles available</li>
-            <li>Free &amp; open repository</li>
+            <li>Curated &amp; verified</li>
             <li>Word for Windows &amp; macOS</li>
           </ul>
         </div>
 
-        <aside class="hero-panel reveal" aria-label="Style library summary">
+        <aside class="hero-panel hero-item" style="--i:2" aria-label="Style library summary">
+          <span class="panel-sheen" aria-hidden="true"></span>
           <div class="panel-glow" aria-hidden="true"></div>
           <p class="panel-label">Ready for Word</p>
           <p class="panel-count"><strong id="style-total">0</strong><span class="panel-count-suffix">downloadable styles</span></p>
@@ -86,10 +107,10 @@
           <dl class="panel-stats">
             <div><dt>Categories</dt><dd id="stat-categories">—</dd></div>
             <div><dt>Format</dt><dd>XSL</dd></div>
-            <div><dt>Last catalog build</dt><dd id="stat-updated">—</dd></div>
+            <div><dt>Catalog built</dt><dd id="stat-updated">—</dd></div>
           </dl>
           <div class="sample-reference">
-            <span class="sample-marker" id="sample-marker" aria-hidden="true">[1]</span>
+            <span class="sample-marker" aria-hidden="true">[1]</span>
             <p>S. Jana and T. N. Sahu, “A well-formatted source,” <em>Journal of Scholarship</em>, 2026.</p>
           </div>
         </aside>
@@ -118,6 +139,59 @@
         </div>
       </section>
 
+      <!-- ================= CITEPILOT TOOLKIT ================= -->
+      <section class="citepilot-section" id="citepilot">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow eyebrow-citepilot">Companion toolkit · free</p>
+            <h2>Manage citations end-to-end with <span class="grad-text">CitePilot.</span></h2>
+          </div>
+          <a class="button tool-open" href="https://citepilot.pages.dev/" target="_blank" rel="noreferrer">Open CitePilot <span aria-hidden="true">↗</span></a>
+        </div>
+
+        <p class="section-lede reveal">
+          CitePilot is a free companion web app built by the same author — it completes the workflow
+          this style library starts: find sources, format them, verify them, and export them into
+          Word-ready bibliographies.
+        </p>
+
+        <div class="tool-grid">
+          <article class="tool-card reveal">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7.5c-3 .5-4.5 2.6-4.5 6 0 2.9 1.4 4.6 3.6 4.6 1.8 0 3.1-1.3 3.1-3.1 0-1.7-1.2-2.9-2.8-2.9-.3 0-.6 0-.8.1.2-1.9 1.3-3.2 3.2-3.9L9 7.5Zm9 0c-3 .5-4.5 2.6-4.5 6 0 2.9 1.4 4.6 3.6 4.6 1.8 0 3.1-1.3 3.1-3.1 0-1.7-1.2-2.9-2.8-2.9-.3 0-.6 0-.8.1.2-1.9 1.3-3.2 3.2-3.9L18 7.5Z"/></svg>
+            </span>
+            <h3>Citation generator</h3>
+            <p>Search any source by <strong>DOI or title</strong> and get an accurate reference in APA, MLA, Chicago, Harvard or IEEE within seconds.</p>
+          </article>
+          <article class="tool-card reveal">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v11.2m0 0 4-4m-4 4-4-4"/><path d="M4 16.5v2A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5v-2"/></svg>
+            </span>
+            <h3>Export to Word &amp; BibTeX</h3>
+            <p>Export your citations as <strong>Word Bibliography XML</strong>, CSL JSON, BibTeX or BibLaTeX — plus a plain .txt reference list.</p>
+          </article>
+          <article class="tool-card reveal">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7.2 9.8 17.4 4 11.6"/><path d="M14.2 5.6 4.9 5.6 4.9 14.9" opacity=".55"/></svg>
+            </span>
+            <h3>Citation consistency check</h3>
+            <p>Scan your whole reference list for mismatched names, years, punctuation and style drift — then rectify issues before submission.</p>
+          </article>
+          <article class="tool-card reveal">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.2c0 4.6 3.2 8.3 7.5 9.8 4.3-1.5 7.5-5.2 7.5-9.8V6L12 3Z"/><path d="m9.2 9.4 5.6 5.6m0-5.6-5.6 5.6"/></svg>
+            </span>
+            <h3>Retracted article check</h3>
+            <p>Flag retracted papers before they reach your manuscript — protect your work from citing unreliable sources.</p>
+          </article>
+        </div>
+
+        <div class="tool-cta reveal">
+          <p class="tool-cta-chip"><span class="pulse-dot" aria-hidden="true"></span> Free · no sign-up · runs in your browser</p>
+          <a class="button" href="https://citepilot.pages.dev/" target="_blank" rel="noreferrer">Try CitePilot now <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
       <!-- ================= INSTALL ================= -->
       <section class="install-section" id="install">
         <div class="section-heading reveal">
@@ -131,7 +205,7 @@
           <article class="step reveal">
             <span class="step-num" aria-hidden="true">01</span>
             <h3>Download</h3>
-            <p>Pick a style above, review its features, then download the <code>.xsl</code> file to your computer.</p>
+            <p>Pick a style above and press <strong>Download</strong> — the <code>.xsl</code> file saves straight to your device.</p>
           </article>
           <article class="step reveal">
             <span class="step-num" aria-hidden="true">02</span>
@@ -169,34 +243,43 @@
         </div>
       </section>
 
-      <!-- ================= CONTRIBUTE ================= -->
+      <!-- ================= CONTRIBUTE (curated) ================= -->
       <section class="contribute-section reveal" id="add">
         <div class="contribute-card">
           <div class="contribute-copy">
-            <p class="eyebrow">Built to grow</p>
-            <h2>Add a new style with one commit.</h2>
+            <p class="eyebrow">Curated for accuracy</p>
+            <h2>Every style is verified before it lands here.</h2>
             <p>
-              This site scans the <code>styles/</code> folder automatically — through the
-              live GitHub API and a catalog that is rebuilt on every push. There is no
-              HTML to edit and no list to update by hand.
+              Citation accuracy is too important to trust to unverified uploads — so files are
+              <strong>not</strong> accepted via drag-and-drop, and the maintainer publishes styles
+              only from a proper git workflow (VS Code), which also keeps the repository free of
+              merge conflicts.
+            </p>
+            <p>
+              Want to contribute a style? The community forum is open: propose your file there,
+              and after verification it will be published to this library.
             </p>
             <div class="contribute-actions">
-              <a class="button button-light" href="https://github.com/susovon-jana/word-bibliography-styles/upload/main/styles" target="_blank" rel="noreferrer">Upload a style on GitHub <span aria-hidden="true">↗</span></a>
-              <a class="text-link" href="README.md">Read the contributor guide</a>
+              <a class="button button-light" href="https://github.com/susovon-jana/word-bibliography-styles/discussions" target="_blank" rel="noreferrer">Propose a style in the forum <span aria-hidden="true">↗</span></a>
+              <a class="text-link" href="README.md#contributing">Read the contribution guide</a>
             </div>
+            <p class="contribute-note">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.2c0 4.6 3.2 8.3 7.5 9.8 4.3-1.5 7.5-5.2 7.5-9.8V6L12 3Z"/><path d="m9.2 12.2 2 2 3.8-4"/></svg>
+              Maintained by Susovon Jana, Ph.D. — verified files are pushed via VS Code to keep history clean.
+            </p>
           </div>
-          <ol class="contribute-steps" aria-label="How automatic updates work">
+          <ol class="contribute-steps" aria-label="How styles get published">
             <li>
               <span>1</span>
-              <div><strong>Drop</strong><p>Save your <code>.xsl</code> file into <code>styles/</code> — any name works; the real Word name is read from the file itself.</p></div>
+              <div><strong>Propose</strong><p>Open a thread in the forum with the style file (attach or link), its source, and why it should be included.</p></div>
             </li>
             <li>
               <span>2</span>
-              <div><strong>Push</strong><p>Commit and push to <code>main</code>. A workflow validates the file and rebuilds the catalog.</p></div>
+              <div><strong>Verify</strong><p>The maintainer tests the <code>.xsl</code> in Word, checks reference formatting and citation accuracy.</p></div>
             </li>
             <li>
               <span>3</span>
-              <div><strong>Done</strong><p>The counter ticks up and the card appears here automatically — usually within a minute.</p></div>
+              <div><strong>Publish</strong><p>Approved files are committed via VS Code to <code>main</code> — the site picks them up automatically.</p></div>
             </li>
           </ol>
         </div>
@@ -209,14 +292,15 @@
           <span class="brand-mark" aria-hidden="true">W</span>
           <div>
             <p class="footer-title">Word Citation Styles</p>
-            <p>Built for clear, consistent academic references.</p>
+            <p>Curated by <a href="https://dr-susovon.pages.dev/" target="_blank" rel="noreferrer">Susovon Jana, Ph.D.</a> · Assistant Professor, Amity University Kolkata</p>
           </div>
         </div>
         <nav class="footer-links" aria-label="Footer navigation">
           <a href="#styles">Styles</a>
-          <a href="#install">Install guide</a>
+          <a href="#citepilot">Toolkit</a>
           <a href="https://github.com/susovon-jana/word-bibliography-styles" target="_blank" rel="noreferrer">Repository</a>
-          <a href="https://dr-susovon.pages.dev/" target="_blank" rel="noreferrer">Developer profile ↗</a>
+          <a href="https://citepilot.pages.dev/" target="_blank" rel="noreferrer">CitePilot ↗</a>
+          <a href="https://dr-susovon.pages.dev/" target="_blank" rel="noreferrer">Susovon Jana, Ph.D. ↗</a>
         </nav>
       </div>
     </footer>
@@ -243,7 +327,7 @@
         <ul class="feature-list"></ul>
         <div class="card-actions">
           <button class="details-button" type="button">Details</button>
-          <a class="download-button" download>Download <span aria-hidden="true">↓</span></a>
+          <a class="download-button" href="#" role="button" aria-label="Download this style">Download <span aria-hidden="true">↓</span></a>
         </div>
       </article>
     </template>
