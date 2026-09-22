@@ -48,7 +48,7 @@ Instead:
    to `main`, validated by CI, and appear on the site automatically.
 
 
-Project maintained by Dr. Susovon Jana, Ph.D., for all current and future releases.
+Project maintained by Susovon Jana, Ph.D., for all current and future releases.
 
 ```bash
 git pull origin main              # start from the latest state
