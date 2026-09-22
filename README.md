@@ -47,10 +47,8 @@ Instead:
 3. **Publish** — approved files are committed from VS Code (a clean git workflow)
    to `main`, validated by CI, and appear on the site automatically.
 
-> Maintainer tip: enable **Discussions** for this repository in
-> Settings → General → Features → Discussions so contributors have a forum.
 
-If you are the maintainer (Susovon), the release flow is simply:
+Project maintained by Dr. Susovon Jana, Ph.D., for all current and future releases.
 
 ```bash
 git pull origin main              # start from the latest state
