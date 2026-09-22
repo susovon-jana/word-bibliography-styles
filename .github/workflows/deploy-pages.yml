@@ -1,5 +1,7 @@
-name: Deploy documentation site
+name: Deploy to GitHub Pages
 
+# Runs on every push to main. The catalog is regenerated automatically,
+# so dropping a new .xsl into styles/ and pushing is all it takes.
 on:
   push:
     branches: [main]
@@ -19,21 +21,27 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Validate styles
-        shell: pwsh
-        run: ./scripts/Validate-Styles.ps1
-      - name: Build style catalogue
-        shell: pwsh
-        run: ./scripts/Build-StyleCatalog.ps1
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate styles & regenerate catalogue
+        run: node scripts/generate-catalog.mjs
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
-      - name: Upload site
+
+      - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

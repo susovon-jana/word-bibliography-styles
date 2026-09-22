@@ -1,0 +1,157 @@
+{
+  "_comment": "Optional metadata overrides for style files in styles/. Any .xsl file NOT listed here is still listed on the website automatically — its display name is parsed from the file itself and its filename is humanized. Add an entry here only to customize the name, summary, features or category. Allowed categories: author-date, numeric, custom, general.",
+  "APASeventhEdition.xsl": {
+    "name": "APA Seventh Edition",
+    "wordName": "APA7",
+    "category": "author-date",
+    "summary": "The current APA 7th edition style with author–date citations and a hanging-indent reference list.",
+    "features": [
+      "APA 7th edition author–date citations",
+      "Hanging-indent alphabetical reference list",
+      "Handles DOIs, URLs, and up to 20 authors"
+    ]
+  },
+  "APASixthEditionOfficeOnline.xsl": {
+    "name": "APA Sixth Edition",
+    "wordName": "APA",
+    "category": "author-date",
+    "summary": "APA 6th edition references for social and behavioral sciences.",
+    "features": [
+      "Author and year citations",
+      "Alphabetical reference list",
+      "Publication and source details"
+    ]
+  },
+  "CHICAGO.XSL": {
+    "name": "Chicago",
+    "wordName": "Chicago",
+    "category": "author-date",
+    "summary": "Chicago author-date references for academic writing.",
+    "features": [
+      "Author-date citation format",
+      "Alphabetical bibliography",
+      "Books, journals, and web sources"
+    ]
+  },
+  "GB.XSL": {
+    "name": "GB/T 7714",
+    "wordName": "GB7714",
+    "category": "numeric",
+    "summary": "Chinese national standard GB/T 7714 numeric references.",
+    "features": [
+      "Bracketed numeric citations",
+      "Standardized Chinese national format",
+      "Supports journals, books, and reports"
+    ]
+  },
+  "GostName.XSL": {
+    "name": "GOST — Name Sort",
+    "wordName": "GOST - Name Sort",
+    "category": "numeric",
+    "summary": "Russian GOST standard references sorted by author name.",
+    "features": [
+      "GOST-compliant reference formatting",
+      "Alphabetical (name) ordering",
+      "Regional citation conventions"
+    ]
+  },
+  "GostTitle.XSL": {
+    "name": "GOST — Title Sort",
+    "wordName": "GOST - Title Sort",
+    "category": "numeric",
+    "summary": "Russian GOST standard references sorted by title.",
+    "features": [
+      "GOST-compliant reference formatting",
+      "Title-based ordering",
+      "Regional citation conventions"
+    ]
+  },
+  "HarvardAnglia2008OfficeOnline.xsl": {
+    "name": "Harvard Anglia",
+    "wordName": "Harvard - Anglia",
+    "category": "author-date",
+    "summary": "Harvard Anglia 2008 references with author-date citations.",
+    "features": [
+      "Author-date citation format",
+      "Alphabetical bibliography",
+      "Readable publication details"
+    ]
+  },
+  "IEEE2006OfficeOnline.xsl": {
+    "name": "IEEE",
+    "wordName": "IEEE",
+    "category": "numeric",
+    "summary": "The standard Word IEEE numeric citation style.",
+    "features": [
+      "Bracketed numeric citations",
+      "References ordered by citation number",
+      "Supports books, articles, websites, and reports"
+    ]
+  },
+  "IEEE_with_DOI.xsl": {
+    "name": "IEEE with DOI",
+    "wordName": "IEEE with DOI",
+    "category": "custom",
+    "summary": "Modern IEEE numerical references with clickable DOI and website links.",
+    "features": [
+      "Clickable DOI identifiers and doi.org links",
+      "Website fallback when no DOI is available",
+      "Numeric in-text citations and bibliography order"
+    ]
+  },
+  "ISO690.XSL": {
+    "name": "ISO 690 — First Element and Date",
+    "wordName": "ISO 690 - First Element and Date",
+    "category": "numeric",
+    "summary": "International ISO 690 standard, first-element-and-date variant.",
+    "features": [
+      "ISO 690 international standard format",
+      "First element and date ordering",
+      "Broad source type support"
+    ]
+  },
+  "ISO690Nmerical.XSL": {
+    "name": "ISO 690 — Numerical Reference",
+    "wordName": "ISO 690 - Numerical Reference",
+    "category": "numeric",
+    "summary": "International ISO 690 standard with numbered references.",
+    "features": [
+      "ISO 690 international standard format",
+      "Numeric in-text citations",
+      "Broad source type support"
+    ]
+  },
+  "MLASeventhEditionOfficeOnline.xsl": {
+    "name": "MLA Seventh Edition",
+    "wordName": "MLA",
+    "category": "author-date",
+    "summary": "MLA 7th edition works cited formatting.",
+    "features": [
+      "Author-led citations",
+      "Works Cited output",
+      "Humanities-focused reference rules"
+    ]
+  },
+  "SIST02.XSL": {
+    "name": "SIST 02",
+    "wordName": "SIST02",
+    "category": "author-date",
+    "summary": "Japanese SIST 02 citation format for academic writing.",
+    "features": [
+      "Japanese academic standard",
+      "Author and year citations",
+      "Structured reference elements"
+    ]
+  },
+  "TURABIAN.XSL": {
+    "name": "Turabian",
+    "wordName": "Turabian",
+    "category": "numeric",
+    "summary": "Turabian style references for student research papers.",
+    "features": [
+      "Turabian citation conventions",
+      "Notes and bibliography support",
+      "Student-friendly formatting"
+    ]
+  }
+}

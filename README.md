@@ -1,90 +1,145 @@
 # Word Bibliography Styles
 
-Word-compatible bibliography styles for Microsoft Office. The custom **IEEE with DOI** style adds DOI and website links to the standard IEEE reference output.
+Ready-to-install Microsoft Word bibliography (citation) styles with a **fully
+automatic download site**. The website reads the `styles/` folder on its own —
+whenever you push a new `.xsl` file, it appears on the site with no manual
+edits.
+
+**Live site:** https://susovon-jana.github.io/word-bibliography-styles/
+
+## How the automatic update works
+
+The site never relies on a hand-written list. Three layers keep it in sync:
+
+| Layer | What it does | When it updates |
+| --- | --- | --- |
+| 1. GitHub API (live) | `assets/app.js` lists `styles/` directly from the GitHub Contents API on every page load | Instantly, on the next visit after you push |
+| 2. Build-time catalog | `scripts/generate-catalog.mjs` re-scans `styles/`, validates every file, and rewrites `styles/index.json` inside the deploy workflow | Every push to `main` |
+| 3. Client-side parse | Any file the catalog has never seen gets its real Word name parsed in the browser from the XSL itself (`b:StyleName` / `b:StyleNameLocalized`) | Automatically, on page load |
+
+So the only thing you ever do to publish a new style is:
+
+1. Copy your `.xsl` file into the `styles/` folder.
+2. Commit and push to `main`.
+
+That's it. The counter ("Ready for Word … downloadable styles"), the category
+filters, the cards and the download links all update themselves.
+
+## Add a style (step by step)
+
+1. Go to the repository on GitHub → `styles/` folder → **Add file → Upload files**.
+2. Drop your `.xsl` file in, write a commit message, and press **Commit changes**.
+3. Wait about a minute for the *Deploy to GitHub Pages* action to finish, then refresh the site.
+4. Even before the action finishes, a hard refresh of the page will usually show the file already, because it is read live from the GitHub API.
+
+### Naming and metadata
+
+* The **display name** on the website is taken from inside the file
+  (`b:StyleNameLocalized`, English) when available, otherwise from the filename.
+* The **name Word shows** (References → Style) is also read from the file and
+  shown on each card's *Details* dialog, so you always know what to look for in Word.
+* Want a nicer summary or a custom category? Add an entry to
+  `scripts/catalog-overrides.json` keyed by the exact filename:
+
+```json
+{
+  "MyNewStyle.xsl": {
+    "name": "My New Style",
+    "category": "author-date",
+    "summary": "One-line description shown on the card.",
+    "features": ["Feature one", "Feature two", "Feature three"]
+  }
+}
+```
+
+Allowed categories: `author-date`, `numeric`, `custom`, `general`.
 
 ## Included styles
 
-| Style file | Word menu name |
-| --- | --- |
-| `IEEE_with_DOI.xsl` | IEEE with DOI |
-| `IEEE2006OfficeOnline.xsl` | IEEE |
-| `APASixthEditionOfficeOnline.xsl` | APA Sixth Edition |
-| `CHICAGO.XSL` | Chicago |
-| `GB.XSL` | GB/T 7714 |
-| `GostName.XSL`, `GostTitle.XSL` | GOST |
-| `HarvardAnglia2008OfficeOnline.xsl` | Harvard Anglia |
-| `ISO690.XSL`, `ISO690Nmerical.XSL` | ISO 690 |
-| `MLASeventhEditionOfficeOnline.xsl` | MLA Seventh Edition |
-| `SIST02.XSL` | SIST 02 |
-| `TURABIAN.XSL` | Turabian |
-
-`APASeventhEdition.xsl` and `EmeraldHarvard.xsl` are not included in this archive because they were only available in the protected per-user Office folder. Copy those two files into `styles/` before publishing if you own the right to distribute them.
-
-## Install in Word for Windows
-
-1. Close all Microsoft Word windows.
-2. Extract this repository, then open the `styles` folder.
-3. Press <kbd>Win</kbd>+<kbd>R</kbd>, enter `%APPDATA%\Microsoft\Bibliography\Style`, and press <kbd>Enter</kbd>.
-4. Copy the required `.xsl` files into that folder. Do not replace a built-in style unless you intend to customize it.
-5. Reopen Word, select **References** → **Style**, and choose the style, for example **IEEE with DOI**.
-6. Select the bibliography and use **Update Citations and Bibliography** after changing a source.
+| Style file | Word menu name | Category |
+| --- | --- | --- |
+| `APASeventhEdition.xsl` | APA7 | Author–date |
+| `APASixthEditionOfficeOnline.xsl` | APA | Author–date |
+| `CHICAGO.XSL` | Chicago | Author–date |
+| `GB.XSL` | GB7714 | Numeric |
+| `GostName.XSL` | GOST - Name Sort | Numeric |
+| `GostTitle.XSL` | GOST - Title Sort | Numeric |
+| `HarvardAnglia2008OfficeOnline.xsl` | Harvard - Anglia | Author–date |
+| `IEEE2006OfficeOnline.xsl` | IEEE | Numeric |
+| `IEEE_with_DOI.xsl` | IEEE with DOI | Custom |
+| `ISO690.XSL` | ISO 690 - First Element and Date | Numeric |
+| `ISO690Nmerical.XSL` | ISO 690 - Numerical Reference | Numeric |
+| `MLASeventhEditionOfficeOnline.xsl` | MLA | Author–date |
+| `SIST02.XSL` | SIST02 | Author–date |
+| `TURABIAN.XSL` | Turabian | Numeric |
 
 ### IEEE with DOI behavior
 
-The style uses the following priority:
+The custom IEEE with DOI style uses the following priority:
 
-1. A DOI stored in the source `DOI` field, as `doi: 10.xxxx/...` with a clickable link.
-2. A full DOI resolver URL, displayed as `https://doi.org/...` without a duplicate `doi:` label.
+1. A DOI stored in the source **DOI** field, shown as `doi: 10.xxxx/...` with a clickable link.
+2. A full DOI resolver URL, displayed as `https://doi.org/...` without a duplicate label.
 3. A normal website URL when no DOI is present, displayed as `Available: https://...`.
 
-If Word does not provide a DOI field in its source dialog, put either `10.xxxx/...` or `DOI: 10.xxxx/...` in **Comments**, or put the resolver URL in **URL**.
+If Word does not provide a DOI field in its source dialog, put either
+`10.xxxx/...` or `DOI: 10.xxxx/...` in **Comments**, or put the resolver URL in **URL**.
 
-## Work with VS Code
+## Install in Word
 
-1. Extract the zip and open the `word-bibliography-styles` folder in VS Code.
-2. Install the **XML** and **PowerShell** extensions from the VS Code Extensions view.
-3. Edit files in `styles/` only. XSL is XML; preserve namespaces, element nesting, and UTF-8 encoding.
-4. In the integrated PowerShell terminal, run:
+**Windows**
 
-   ```powershell
-   .\scripts\Validate-Styles.ps1
-   ```
+1. Close all Microsoft Word windows.
+2. Press <kbd>Win</kbd>+<kbd>R</kbd>, enter `%APPDATA%\Microsoft\Bibliography\Style`, press <kbd>Enter</kbd>.
+3. Copy the downloaded `.xsl` files into that folder.
+4. Reopen Word → **References** → **Style** → pick the new style.
+5. Select the bibliography and click **Update Citations and Bibliography**.
 
-5. Test a changed style in Word using a document that has at least one source for every affected reference type.
+**macOS**
 
-## Publish to GitHub
+1. Quit Word.
+2. Copy the `.xsl` files to `~/Library/Containers/com.microsoft.Word/Data/Documents/Bibliography/Style`
+   (create the folder if it does not exist).
+3. Reopen Word → **References** → **Style**.
 
-Create an empty GitHub repository, then run these commands from the VS Code terminal. Replace `YOUR-ACCOUNT` with your GitHub username and `YOUR-REPOSITORY` with the repository name.
+## Local development
 
-```powershell
-git init
-git add .
-git commit -m "Add Word bibliography styles"
-git branch -M main
-git remote add origin https://github.com/YOUR-ACCOUNT/YOUR-REPOSITORY.git
-git push -u origin main
+Any static file server works:
+
+```bash
+# Python
+python -m http.server 8080
+
+# or Node
+npx serve .
 ```
 
-The included GitHub Actions workflow validates every XSL file when you push or open a pull request.
+Then open http://localhost:8080.
 
-```powershell
-git add .
-git commit -m "Update bibliography styles"
-git push
+To rebuild the catalog manually (the GitHub Action does this automatically):
+
+```bash
+node scripts/generate-catalog.mjs
 ```
 
-## Publish the download website
+Requirements: Node.js 16+ (any operating system). The old PowerShell scripts
+(`Build-StyleCatalog.ps1`, `Validate-Styles.ps1`) have been removed — the Node
+script replaces both and runs everywhere, including the GitHub Actions
+`ubuntu-latest` runner.
 
-This repository includes a responsive download website at `index.html`. It loads its style cards from `styles/index.json`; the deployment workflow rebuilds this catalogue every time you push to `main`.
+## Repository layout
 
-1. Push the repository to GitHub using the commands above.
-2. On GitHub, open **Settings** → **Pages**.
-3. Under **Build and deployment**, select **GitHub Actions** as the source.
-4. Push a commit to `main` or run **Deploy documentation site** from the **Actions** tab.
-5. GitHub displays the public website address when the workflow completes.
-
-To add a new style later, add its `.xsl` file to `styles/`, run `./scripts/Validate-Styles.ps1` locally, and push the change. The style is automatically added to the website download catalogue during deployment.
-
-## License and attribution
-
-Several files are Microsoft Office-provided styles. Review the applicable Microsoft Office license before publishing or relicensing them. Do not apply an open-source license to those upstream files unless you have permission. Document your own changes to `IEEE_with_DOI.xsl` in commits or release notes.
+```
+├── index.html                  # the site
+├── assets/
+│   ├── app.js                  # 3-layer auto-update loader + UI logic
+│   ├── styles.css              # design system (light/dark)
+│   └── favicon.svg
+├── styles/                     # ← drop new .xsl files here
+│   └── index.json              # generated catalog (do not edit by hand)
+├── scripts/
+│   ├── generate-catalog.mjs    # validator + catalog builder (Node)
+│   └── catalog-overrides.json  # optional per-style metadata
+└── .github/workflows/
+    ├── deploy-pages.yml        # validate → rebuild catalog → deploy
+    └── validate-styles.yml     # validate on every push/PR
+```

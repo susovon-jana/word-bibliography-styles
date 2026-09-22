@@ -1,171 +1,203 @@
-[
-  {
-    "file": "APASixthEditionOfficeOnline.xsl",
-    "name": "APA Sixth Edition",
-    "wordName": "APA Sixth Edition",
-    "category": "author-date",
-    "categoryLabel": "Author–date",
-    "summary": "APA 6th edition references for social and behavioral sciences.",
-    "features": [
-      "Author and year citations",
-      "Alphabetical reference list",
-      "Publication and source details"
-    ]
-  },
-  {
-    "file": "CHICAGO.XSL",
-    "name": "Chicago",
-    "wordName": "Chicago",
-    "category": "author-date",
-    "categoryLabel": "Author–date",
-    "summary": "Chicago author-date references for academic writing.",
-    "features": [
-      "Author-date citation format",
-      "Alphabetical bibliography",
-      "Books, journals, and web sources"
-    ]
-  },
-  {
-    "file": "GB.XSL",
-    "name": "GB",
-    "wordName": "GB",
-    "category": "numeric",
-    "categoryLabel": "Reference style",
-    "summary": "Microsoft Word bibliography style: GB.",
-    "features": [
-      "Compatible with Microsoft Word bibliography tools",
-      "Downloadable XSL style file",
-      "Installable in the Word styles folder"
-    ]
-  },
-  {
-    "file": "GostName.XSL",
-    "name": "GostName",
-    "wordName": "GostName",
-    "category": "numeric",
-    "categoryLabel": "Reference style",
-    "summary": "Microsoft Word bibliography style: GostName.",
-    "features": [
-      "Compatible with Microsoft Word bibliography tools",
-      "Downloadable XSL style file",
-      "Installable in the Word styles folder"
-    ]
-  },
-  {
-    "file": "GostTitle.XSL",
-    "name": "GostTitle",
-    "wordName": "GostTitle",
-    "category": "numeric",
-    "categoryLabel": "Reference style",
-    "summary": "Microsoft Word bibliography style: GostTitle.",
-    "features": [
-      "Compatible with Microsoft Word bibliography tools",
-      "Downloadable XSL style file",
-      "Installable in the Word styles folder"
-    ]
-  },
-  {
-    "file": "HarvardAnglia2008OfficeOnline.xsl",
-    "name": "Harvard Anglia",
-    "wordName": "Harvard - Anglia",
-    "category": "author-date",
-    "categoryLabel": "Author–date",
-    "summary": "Harvard Anglia references with author-date citations.",
-    "features": [
-      "Author-date citation format",
-      "Alphabetical bibliography",
-      "Readable publication details"
-    ]
-  },
-  {
-    "file": "IEEE_with_DOI.xsl",
-    "name": "IEEE with DOI",
-    "wordName": "IEEE with DOI",
-    "category": "custom",
-    "categoryLabel": "Custom",
-    "summary": "Modern IEEE numerical references with clickable DOI and website links.",
-    "features": [
-      "Clickable DOI identifiers and doi.org links",
-      "Website fallback when no DOI is available",
-      "Numeric in-text citations and bibliography order"
-    ]
-  },
-  {
-    "file": "IEEE2006OfficeOnline.xsl",
-    "name": "IEEE",
-    "wordName": "IEEE",
-    "category": "numeric",
-    "categoryLabel": "Numeric",
-    "summary": "The standard Word IEEE numeric citation style.",
-    "features": [
-      "Bracketed numeric citations",
-      "References ordered by citation number",
-      "Supports books, articles, websites, and reports"
-    ]
-  },
-  {
-    "file": "ISO690.XSL",
-    "name": "ISO690",
-    "wordName": "ISO690",
-    "category": "numeric",
-    "categoryLabel": "Reference style",
-    "summary": "Microsoft Word bibliography style: ISO690.",
-    "features": [
-      "Compatible with Microsoft Word bibliography tools",
-      "Downloadable XSL style file",
-      "Installable in the Word styles folder"
-    ]
-  },
-  {
-    "file": "ISO690Nmerical.XSL",
-    "name": "ISO690 Numerical",
-    "wordName": "ISO690 Numerical",
-    "category": "numeric",
-    "categoryLabel": "Reference style",
-    "summary": "Microsoft Word bibliography style: ISO690 Numerical.",
-    "features": [
-      "Compatible with Microsoft Word bibliography tools",
-      "Downloadable XSL style file",
-      "Installable in the Word styles folder"
-    ]
-  },
-  {
-    "file": "MLASeventhEditionOfficeOnline.xsl",
-    "name": "MLA Seventh Edition",
-    "wordName": "MLA Seventh Edition",
-    "category": "author-date",
-    "categoryLabel": "Author–date",
-    "summary": "MLA 7th edition works cited formatting.",
-    "features": [
-      "Author-led citations",
-      "Works Cited output",
-      "Humanities-focused reference rules"
-    ]
-  },
-  {
-    "file": "SIST02.XSL",
-    "name": "SIST02",
-    "wordName": "SIST02",
-    "category": "numeric",
-    "categoryLabel": "Reference style",
-    "summary": "Microsoft Word bibliography style: SIST02.",
-    "features": [
-      "Compatible with Microsoft Word bibliography tools",
-      "Downloadable XSL style file",
-      "Installable in the Word styles folder"
-    ]
-  },
-  {
-    "file": "TURABIAN.XSL",
-    "name": "TURABIAN",
-    "wordName": "TURABIAN",
-    "category": "numeric",
-    "categoryLabel": "Reference style",
-    "summary": "Microsoft Word bibliography style: TURABIAN.",
-    "features": [
-      "Compatible with Microsoft Word bibliography tools",
-      "Downloadable XSL style file",
-      "Installable in the Word styles folder"
-    ]
-  }
-]
+{
+  "generated": "2026-09-22T11:33:53.500Z",
+  "generator": "scripts/generate-catalog.mjs",
+  "count": 14,
+  "styles": [
+    {
+      "file": "APASeventhEdition.xsl",
+      "name": "APA Seventh Edition",
+      "wordName": "APA7",
+      "category": "author-date",
+      "categoryLabel": "Author–date",
+      "summary": "The current APA 7th edition style with author–date citations and a hanging-indent reference list.",
+      "features": [
+        "APA 7th edition author–date citations",
+        "Hanging-indent alphabetical reference list",
+        "Handles DOIs, URLs, and up to 20 authors"
+      ],
+      "size": 334222
+    },
+    {
+      "file": "APASixthEditionOfficeOnline.xsl",
+      "name": "APA Sixth Edition",
+      "wordName": "APA",
+      "category": "author-date",
+      "categoryLabel": "Author–date",
+      "summary": "APA 6th edition references for social and behavioral sciences.",
+      "features": [
+        "Author and year citations",
+        "Alphabetical reference list",
+        "Publication and source details"
+      ],
+      "size": 333602
+    },
+    {
+      "file": "CHICAGO.XSL",
+      "name": "Chicago",
+      "wordName": "Chicago",
+      "category": "author-date",
+      "categoryLabel": "Author–date",
+      "summary": "Chicago author-date references for academic writing.",
+      "features": [
+        "Author-date citation format",
+        "Alphabetical bibliography",
+        "Books, journals, and web sources"
+      ],
+      "size": 297017
+    },
+    {
+      "file": "GB.XSL",
+      "name": "GB/T 7714",
+      "wordName": "GB7714",
+      "category": "numeric",
+      "categoryLabel": "Numeric",
+      "summary": "Chinese national standard GB/T 7714 numeric references.",
+      "features": [
+        "Bracketed numeric citations",
+        "Standardized Chinese national format",
+        "Supports journals, books, and reports"
+      ],
+      "size": 268670
+    },
+    {
+      "file": "GostName.XSL",
+      "name": "GOST — Name Sort",
+      "wordName": "GOST - Name Sort",
+      "category": "numeric",
+      "categoryLabel": "Numeric",
+      "summary": "Russian GOST standard references sorted by author name.",
+      "features": [
+        "GOST-compliant reference formatting",
+        "Alphabetical (name) ordering",
+        "Regional citation conventions"
+      ],
+      "size": 256358
+    },
+    {
+      "file": "GostTitle.XSL",
+      "name": "GOST — Title Sort",
+      "wordName": "GOST - Title Sort",
+      "category": "numeric",
+      "categoryLabel": "Numeric",
+      "summary": "Russian GOST standard references sorted by title.",
+      "features": [
+        "GOST-compliant reference formatting",
+        "Title-based ordering",
+        "Regional citation conventions"
+      ],
+      "size": 251449
+    },
+    {
+      "file": "HarvardAnglia2008OfficeOnline.xsl",
+      "name": "Harvard Anglia",
+      "wordName": "Harvard - Anglia",
+      "category": "author-date",
+      "categoryLabel": "Author–date",
+      "summary": "Harvard Anglia 2008 references with author-date citations.",
+      "features": [
+        "Author-date citation format",
+        "Alphabetical bibliography",
+        "Readable publication details"
+      ],
+      "size": 284802
+    },
+    {
+      "file": "IEEE_with_DOI.xsl",
+      "name": "IEEE with DOI",
+      "wordName": "IEEE with DOI",
+      "category": "custom",
+      "categoryLabel": "Custom",
+      "summary": "Modern IEEE numerical references with clickable DOI and website links.",
+      "features": [
+        "Clickable DOI identifiers and doi.org links",
+        "Website fallback when no DOI is available",
+        "Numeric in-text citations and bibliography order"
+      ],
+      "size": 297335
+    },
+    {
+      "file": "IEEE2006OfficeOnline.xsl",
+      "name": "IEEE",
+      "wordName": "IEEE",
+      "category": "numeric",
+      "categoryLabel": "Numeric",
+      "summary": "The standard Word IEEE numeric citation style.",
+      "features": [
+        "Bracketed numeric citations",
+        "References ordered by citation number",
+        "Supports books, articles, websites, and reports"
+      ],
+      "size": 294525
+    },
+    {
+      "file": "ISO690.XSL",
+      "name": "ISO 690 — First Element and Date",
+      "wordName": "ISO 690 - First Element and Date",
+      "category": "numeric",
+      "categoryLabel": "Numeric",
+      "summary": "International ISO 690 standard, first-element-and-date variant.",
+      "features": [
+        "ISO 690 international standard format",
+        "First element and date ordering",
+        "Broad source type support"
+      ],
+      "size": 270642
+    },
+    {
+      "file": "ISO690Nmerical.XSL",
+      "name": "ISO 690 — Numerical Reference",
+      "wordName": "ISO 690 - Numerical Reference",
+      "category": "numeric",
+      "categoryLabel": "Numeric",
+      "summary": "International ISO 690 standard with numbered references.",
+      "features": [
+        "ISO 690 international standard format",
+        "Numeric in-text citations",
+        "Broad source type support"
+      ],
+      "size": 217578
+    },
+    {
+      "file": "MLASeventhEditionOfficeOnline.xsl",
+      "name": "MLA Seventh Edition",
+      "wordName": "MLA",
+      "category": "author-date",
+      "categoryLabel": "Author–date",
+      "summary": "MLA 7th edition works cited formatting.",
+      "features": [
+        "Author-led citations",
+        "Works Cited output",
+        "Humanities-focused reference rules"
+      ],
+      "size": 255219
+    },
+    {
+      "file": "SIST02.XSL",
+      "name": "SIST 02",
+      "wordName": "SIST02",
+      "category": "author-date",
+      "categoryLabel": "Author–date",
+      "summary": "Japanese SIST 02 citation format for academic writing.",
+      "features": [
+        "Japanese academic standard",
+        "Author and year citations",
+        "Structured reference elements"
+      ],
+      "size": 251336
+    },
+    {
+      "file": "TURABIAN.XSL",
+      "name": "Turabian",
+      "wordName": "Turabian",
+      "category": "numeric",
+      "categoryLabel": "Numeric",
+      "summary": "Turabian style references for student research papers.",
+      "features": [
+        "Turabian citation conventions",
+        "Notes and bibliography support",
+        "Student-friendly formatting"
+      ],
+      "size": 344662
+    }
+  ]
+}
