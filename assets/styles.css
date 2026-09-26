@@ -1621,3 +1621,6 @@ html[data-theme="dark"] .toast { background: #e8eefc; color: #16233b; }
   body.is-booting .hero-item { opacity: 1; }
   .panel-sheen, .intro-overlay::after { animation: none; }
 }
+.seo-index{max-width:1100px;margin:2rem auto;padding:1.5rem;border-radius:18px;background:rgba(255,255,255,.72);border:1px solid rgba(43,87,154,.12)}
+.seo-index h2{margin:0 0 .5rem}.seo-index p{margin:.25rem 0 1rem}.seo-index ul{columns:2;gap:2rem;margin:0;padding-left:1.2rem}.seo-index li{margin:.35rem 0}.seo-index a{font-weight:600}
+@media(max-width:700px){.seo-index ul{columns:1}}
